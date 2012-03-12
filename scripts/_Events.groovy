@@ -1,5 +1,5 @@
 /*
- * Copyright 2009-2010 the original author or authors.
+ * Copyright 2009-2012 the original author or authors.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -19,8 +19,6 @@
  */
 
 import griffon.util.Environment
-
-includeTargets << griffonScript("_GriffonSettings")
 
 joglCompatJnlpResources = []
 def joglCompat_version = '1.1.1'
@@ -47,19 +45,6 @@ eventCopyLibsEnd = { jardir ->
             PLATFORMS.each { doWithPlatform(it.key) }
         }
     }
-}
-
-def eventClosure2 = binding.variables.containsKey('eventSetClasspath') ? eventSetClasspath : {cl->}
-eventSetClasspath = { cl ->
-    eventClosure2(cl)
-    if(compilingPlugin('jogl-compat')) return
-    griffonSettings.dependencyManager.flatDirResolver name: 'griffon-jogl-compat-plugin', dirs: "${joglCompatPluginDir}/addon"
-    griffonSettings.dependencyManager.addPluginDependency('jogl-compat', [
-        conf: 'compile',
-        name: 'griffon-jogl-compat-addon',
-        group: 'org.codehaus.griffon.plugins',
-        version: joglCompatPluginVersion
-    ])
 }
 
 doWithPlatform = { platformOs ->
