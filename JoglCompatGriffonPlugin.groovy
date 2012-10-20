@@ -19,11 +19,11 @@
  */
 class JoglGriffonPlugin {
     // the plugin version
-    String version = '0.2'
+    String version = '1.0.0'
     // the version or versions of Griffon the plugin is designed for
-    String griffonVersion = '0.9.5 > *'
+    String griffonVersion = '1.0.0 > *'
     // the other plugins this plugin depends on
-    Map dependsOn = [swing: '0.9.5']
+    Map dependsOn = [swing: '1.0.0']
     // resources that are included in plugin packaging
     List pluginIncludes = []
     // the plugin license
@@ -63,9 +63,10 @@ The following nodes will become available on a View script upon installing this 
 
 ### Example
 
-A trivial example can be found at [https://github.com/aalmiray/griffon_sample_apps/tree/master/3d/jogl][3]. It is the Gears
+A trivial example can be found at [https://github.com/aalmiray/griffon_sample_apps/tree/master/3d/jogl][2]. It is the Gears
 demo running inside a Griffon application.
 
 [1]: http://jogamp.org/
+[2]: https://github.com/aalmiray/griffon_sample_apps/tree/master/3d/jogl
 '''
 }
