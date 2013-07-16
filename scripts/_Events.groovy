@@ -1,5 +1,5 @@
 /*
- * Copyright 2009-2012 the original author or authors.
+ * Copyright 2009-2013 the original author or authors.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -22,7 +22,7 @@ import griffon.util.Environment
 
 joglCompatJnlpResources = []
 def joglCompat_version = '1.1.1'
-for(os in ['linux', 'macosx', 'windows']) {
+for(os in ['linux', 'macosx', 'windows', 'linux64', 'macosx64', 'windows64']) {
     joglCompatJnlpResources << [os: os, nativelibs: ["webstart/jogl-compat-natives-${joglCompat_version}-${os}.jar"]]
 }
 
@@ -49,7 +49,6 @@ eventCopyLibsEnd = { jardir ->
 
 doWithPlatform = { platformOs ->
     def origPlatformOs = platformOs
-    if(platformOs.endsWith('64')) platformOs -= '64'
 
     ant.fileset(dir: "${getPluginDirForName('jogl-compat').file}/lib/webstart", includes: "*${platformOs}.jar").each {
         griffonCopyDist(it.toString(), new File(jardir.toString(), 'webstart').absolutePath)
